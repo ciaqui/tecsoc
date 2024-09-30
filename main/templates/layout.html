@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- OG Tags -->
+  <meta property="og:site_name" content="TECsoc" />
+  {% if title != null %}
+  <meta property="og:title" content="TECsoc - {{ title }}" />
+  {% else %}
+  <meta property="og:title" content="TECsoc" />
+  {% endif %}
+  {% if description != null %}
+  <meta property="og:description" content="{{ og_description }}" />
+  {% else %}
+  <meta property="og:description"
+    content="The Official Cardiff University Technology Society! - Projects: Rockets, Battle Bots, Robotics, Drones, and more" />
+  {% endif %}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ url_for('index') }}" />
+  <meta property="og:image" content="https://tecsoc.wales/static/img/tecsoc_logo.png" />
+  <meta property="og:image:alt" content="TECsoc Logo" />
+  <meta name="theme-color" content="#FF0000">
+  <!-- Include this to make the og:image larger -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image:alt" content="TECsoc Logo">
+  <!-- OG Tags -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+  <title>TECsoc
+    {% if title != null %}
+    - {{ title }}
+    {% endif %}
+  </title>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css_v3/styles.css') }}" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <script src="https://kit.fontawesome.com/115d02db0d.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="main-container" id="main-container">
+    <header {% if title != "Home" %}style="height: 66vh;"{% endif %}>
+      <div class="home-img">
+        <img src="{{ url_for('static', filename = 'img/robot2.jpg') }}" alt="" class="full-image" {% if title != "Home" %}style="height: 66vh;"{% endif %}>
+        <div class="centered-text-overlay">
+          {% if title == "Home" %}
+            <h1>Cardiff University<br>Electronics & Technology Society</h1>
+          {%else%}
+            <h1>{{title}}</h1>
+          {%endif%}
+          <div class="socials">
+            <a target="_blank" href="https://www.facebook.com/CardiffTECsoc/"><i class="fa-brands fa-facebook" style="color: #fdfdfd;"></i></a>
+            <a target="_blank" href="https://discord.gg/fxkqSmAZng"><i class="fa-brands fa-discord" style="color: #fdfdfd;"></i></a>
+            <a href="mailto:ETSoc@cardiff.ac.uk"><i class="fa-solid fa-envelope" style="color: #fdfdfd;"></i></a>
+          </div>
+        </div>
+      </div>
+      <a href="{{url_for('index')}}">
+        <span style="display: inline-flex; float: left; padding: 20px;">
+          <img class="logoimg" height="100px" 
+            src="{{url_for('static', filename='img/tecsoc_logo.png')}}" />
+        </span>
+      </a>
+      <!-- NAV BAR -->
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('projects') }}">Projects</a></li>
+          <li><a href="{{ url_for('about') }}">About Us</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+          <button class="theme_changer"></button>
+        </ul>
+      </nav>
+    </header>
+
+  <aside class="contents-nav" id="contents-nav">
+    <div class="inner-aside">
+      <br />
+      <div class="quick-nav">{{title}}</div>
+      <ul id="contents-navigation-list">
+      </ul>
+    </div>
+    <div class="top-of-page">
+      <a onclick="scrollToTop()" style="color: #85858540;"><i class="fa-solid fa-square-caret-up"
+          style="font-size: 25px;"></i></a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <button onClick="CollapseAside(this);" value="OFF" id="collapse-aside-btn">
+
+    </button>
+
+    <div>
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="flashes">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
+    <div id="content">
+      {% block content %}
+      <!-- page content generates here -->
+      {% endblock %}
+    </div>
+  </main>
+
+  <div style="flex-grow: 1"></div>
+  <footer style="color: #fdfdfd;">
+    <div class="inner_footer">
+      <div class="footer-sec-1">
+        <span style="display: inline-flex;">
+          <img id="logoimg" height="200px" 
+            src="{{url_for('static', filename='img/tecsoc_logo.png')}}" />
+          <img id="logoimg" height="200px" 
+            src="{{url_for('static', filename='img/cardiff_university_logo.png')}}" />
+        </span>
+      </div>
+      <div class="footer-sec-2">
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+      <div class="footer-sec-3">
+        <p><strong>Location:</strong> <br>
+          Electronics Laboratory (E/1.13), <br>
+          The School of Engineering, <br>
+          Queen’s Buildings, <br>
+          14-17 The Parade, <br>
+          Cardiff, <br>
+          CF24 3AA
+        </p>
+        <a href="https://goo.gl/maps/mLXbb81Dte7eerFa6" style="color: #fdfdfd;"><b><i>View on map ></i></b></a>
+      </div>
+      <div class="footer-sec-4">
+        <br>
+        <br>
+      </div>
+      <div class="footer-sec-5">
+        <p>
+          <strong>Phone Number: </strong><a href="tel:029 2087 4716" style="color: #fdfdfd;">029 2087 4716</a>
+          <br>
+          <br>
+          <strong>Email: </strong>
+          <a href="mailto:ETSoc@cardiff.ac.uk" style="color: #fdfdfd;">ETSoc@cardiff.ac.uk</a>
+        </p>
+      </div>
+      <div class="footer-btn" style="margin-left: -10%">
+        <input type="button" id="mystery" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      ©<span id="year"></span> Electronics and Technology Society – All
+      Rights Reserved
+    </div>
+  </footer>
+
+  <script>
+    var viewport_width = window.innerWidth;
+
+    var contents_nav = document.getElementById('contents-nav');
+    var button_element = document.getElementById("collapse-aside-btn")
+    var button_element_value = document.getElementById("collapse-aside-btn").value
+    let element = document.getElementById('main-container');
+
+    let contentsList = [];
+
+    //let headings = document.querySelectorAll("h2, h3");
+    let headings = document.querySelectorAll("h2");
+
+    // get contents nav
+    contents_nav_list = document.getElementById("contents-navigation-list");
+
+
+    button_element.className = "fa-solid fa-caret-right";
+
+    function CollapseAside(button) {
+      if (button.value == "ON") {
+        contents_nav.style.display = "none";
+        let element = document.getElementById('main-container');
+
+        element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+
+        button.value = "OFF";
+        button_element_value = "OFF"
+        button_element.className = "fa-solid fa-caret-right";
+      }
+      else {
+        contents_nav.style.display = "block";
+        let element = document.getElementById('main-container');
+
+        element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "aside  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+
+        button.value = "ON";
+        button_element_value = "ON"
+        button_element.className = "fa-solid fa-caret-left";
+      }
+    }
+
+    if (headings.length == 0) {
+      contents_nav.parentNode.removeChild(contents_nav);
+
+      button_element.style.visibility = "hidden";
+      element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+    }
+
+    else {
+      let i = 1;
+      for (let heading of headings) {
+
+        //contentsList.push(contentsList);
+        // add id to each
+        new_headid = "h-" + i;
+        heading.id = new_headid;
+        // append to aside
+
+        let headingName = heading.innerHTML;
+        headingName = headingName.replace("amp;", "");
+
+        let liNode = document.createElement("li");
+        let aNode = document.createElement("a");
+        aNode.appendChild(document.createTextNode(headingName));
+        aNode.title = headingName;
+        aNode.href = "#" + new_headid;
+        liNode.appendChild(aNode);
+        contents_nav_list.appendChild(liNode);
+
+        i++;
+      }
+
+      if (viewport_width <= 1500) {
+        element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+        contents_nav.style.display = "none";
+        button_element.style.visibility = "hidden";
+      }
+
+      else if ((viewport_width > 1500) && (button_element_value == "OFF")) {
+        element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main   main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+        contents_nav.style.display = "none";
+        button_element.style.visibility = "visible";
+      }
+
+      else {
+        element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "aside  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+        contents_nav.style.display = "block";
+        button_element.style.visibility = "visible";
+      }
+    }
+
+    //['resize', 'scroll'].forEach(function (evt) {
+    ['resize'].forEach(function (evt) {
+      
+      window.addEventListener(evt, function () {
+        var viewport_width = window.innerWidth;
+
+        if (headings.length == 0) {
+          button_element.style.visibility = "hidden";
+          element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+        }
+
+        else {
+          if ((viewport_width <= 1500)) {
+            element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+            contents_nav.style.display = "none";
+            button_element.style.visibility = "hidden";
+          }
+
+          else if ((viewport_width > 1500) && (button_element_value == "ON")) {
+            element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "aside  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+            contents_nav.style.display = "block";
+            button_element.style.visibility = "visible";
+          }
+
+          else {
+            element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main   main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+            contents_nav.style.display = "none";
+            button_element.style.visibility = "visible";
+          }
+        }
+        /*
+        if (window.scrollY < 1000) {
+        element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+        contents_nav.style.display = "none";
+        button_element.style.visibility = "hidden";
+      }
+      */
+      });
+
+    });
+    /*
+      if (window.scrollY < 1000) {
+        element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+        contents_nav.style.display = "none";
+        button_element.style.visibility = "hidden";
+      }
+
+      window.addEventListener("scroll", function () {
+        if (window.scrollY < 1000) {
+          element.style.gridTemplateAreas = '"header header header header  header  header  header header  header  header" "main  main   main   main  main   main   main  main    main    main" "footer footer footer footer footer  footer  footer footer  footer  footer"';
+          contents_nav.style.display = "none";
+          button_element.style.visibility = "hidden";
+        }
+      });
+      */
+
+      document.getElementById("year").innerHTML = new Date().getFullYear();
+
+      /*
+      let j = 1;
+      for (let subheading of subheadings){
+        //contentsList.push(contentsList);
+        // add id to each
+        new_subheadid = "h-" + j;
+        subheading.id = new_subheadid;
+        // append to aside
+  
+        let subheadingName = subheading.innerHTML;
+  
+        let liNode = document.createElement("li");
+        let aNode = document.createElement("a");
+  
+        aNode.appendChild(document.createTextNode(subheadingName));
+        aNode.title = subheadingName;
+        aNode.href = "#" + new_subheadid;
+        liNode.appendChild(aNode);
+  
+        contents_nav_list.appendChild(liNode);
+  
+        j++;
+      }
+      */
+
+      function scrollToTop() {
+        document.documentElement.scrollTop = 0;
+      }
+      let el = document.getElementById("mystery");
+      el.style = "opacity:0;";
+      el.onclick = () => {
+        let nav = document.getElementsByTagName("header")[0];
+        if (nav.className == "r-b") {
+          nav.className = "";
+        } else {
+          nav.className = "r-b";
+        }
+      };
+
+      const themeBtn = document.querySelector(".theme_changer");
+
+      function getCurrentTheme() {
+        let theme = window.matchMedia("(prefers-color-scheme:dark)").matches
+          ? "dark"
+          : "light";
+        localStorage.getItem("etsoc.theme")
+          ? (theme = localStorage.getItem("etsoc.theme"))
+          : null;
+        return theme;
+      }
+      function loadTheme(theme) {
+        const root = document.querySelector(":root");
+        console.log(root.getAttribute("color-scheme"));
+        root.setAttribute("color-scheme", `${theme}`);
+        setThemeIcon(theme);
+      }
+      function setThemeIcon(theme) {
+        //let theme = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+        if (theme === "dark") {
+          themeBtn.innerHTML = "🌙";
+        } else {
+          themeBtn.innerHTML = "🌞";
+        }
+      }
+
+      themeBtn.addEventListener("click", () => {
+        let theme = getCurrentTheme();
+        if (theme === "dark") {
+          theme = "light";
+        } else {
+          theme = "dark";
+        }
+        localStorage.setItem("etsoc.theme", `${theme}`);
+        loadTheme(theme);
+      });
+      /*
+          asideBtn.addEventListener("click", () => {
+            
+          });
+      */
+      window.addEventListener("DOMContentLoaded", () => {
+        loadTheme(getCurrentTheme());
+      });
+
+      //var headingslist = ["projects", "about", "events", "opening", "blogs", "equipment"]
+
+  </script>
+</body>
+
+</html>

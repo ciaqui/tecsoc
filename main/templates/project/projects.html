@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block content %}
+    <background-container>
+        <div class="projects">
+            <h2 style="margin-bottom: 75px;">Our Projects</h2>
+    
+            {% for project in projects %}
+            <div class="project_styling">
+                <div class="flex_child">
+                    <div class="image_child">
+                        {% if project.img|length > 0 %}
+                        <img class="project_img" src="{{ url_for('static', filename='img/projects/' + project.img) }}">
+                        {% endif %}
+                    </div>
+    
+                    <div class="heading-design" style="text-align: center; padding: 30px 20px 1px 20px;">
+                        <h3>{{ project.heading }}</h3>
+                    </div>
+                    <div class="text_child">
+                        <!-- <strong>Start Date:</strong> {{ project.date }} | <strong>Time:</strong> {{ project.time }} -->
+                        <p>{{ project.description }}</p>
+                        <!-- <strong>Link:</strong> <a href="https://www.cardiffstudents.com/projects/6495/{{ project.link }}" target="_blank">Book a ticket</a> -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!--
+            <a href="{{ url_for('projects') }}">
+                <button>More projects</button>
+            </a>
+            -->
+        </div>
+    </background-container>
+    <!--
+    <h3 style="text-align: center; padding-bottom:10vh">- More Projects Coming Soon -</h3>
+            
+
+ <img style="max-width:100%"src={{url_for('static', filename='img/projects/fins-over-gwent-54075-2019-06-23-2019-06-23-at-13-56-08.jpg')}}></img> -->
+
+    <!-- this code should work below but was made for promo so not tried yet -->
+
+    <!-- <div class="project-list">
+        <h2>Current Projects</h2>
+        {% for project in current_projects %}
+            {% if project.image %}
+                <img src="{{ project_feature_image }}" alt="{{ project_feature_image_title }}">
+            {% else %}
+                <img src="{{ default_project_image }}" alt="{{ default_project_image_title }}">
+            {% endif %}
+            {{ project.title }}
+            {{ project.short_description }}
+            <a href="{{ url_for('project', project.id) }}">See Project</a>
+        {% endfor %}
+    </div>
+
+    <div class="project-list">
+        <h2>Past Projects</h2>
+        {% for project in past_projects %}
+            {% if project.image %}
+            <img src="{{ project_feature_image }}" alt="{{ project_feature_image_title }}">
+        {% else %}
+            <img src="{{ default_project_image }}" alt="{{ default_project_image_title }}">
+        {% endif %}
+            {{ project.title }}
+            {{ project.short_description }}
+            <a href="{{ url_for('project', project.id) }}">See Project</a>
+        {% endfor %}
+    </div> -->
+{% endblock %}

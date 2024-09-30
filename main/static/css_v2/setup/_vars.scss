@@ -1,0 +1,64 @@
+:root{
+    --primary-light: rgb(255, 255, 255);
+    --secondary-light: rgb(172, 0, 0);
+    --tertiary-light: #bbb;
+    --a4nary-light: #eee; // sass won't compile when a var starts with a num
+    --links-light: rgb(105, 163, 230);
+    --text-light: #000;
+
+    --primary-dark: #181a1b;
+    --secondary-dark: #cb0000;
+    --tertiary-dark: #3e4446;
+    --a4nary-dark: #222426; // sass won't compile when a var starts with a num
+    --links-dark: rgb(105, 163, 230);
+    --text-dark: #e8e6e3;
+}
+
+@media (prefers-color-scheme: light) {
+    :root{
+        --primary: var(--primary-light);
+        --secondary: var(--secondary-light);
+        --tertiary: var(--tertiary-light);
+        --a4nary: var(--a4nary-light);
+        --links: var(--links-light);
+        --text: var(--text-light);
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root{
+        --primary: var(--primary-dark);
+        --secondary: var(--secondary-dark);
+        --tertiary: var(--tertiary-dark);
+        --a4nary: var(--a4nary-dark);
+        --links: var(--links-dark);
+        --text: var(--text-dark);
+    }
+    
+}
+
+[color-scheme="dark"]{
+    --primary: var(--primary-dark);
+    --secondary: var(--secondary-dark);
+    --tertiary: var(--tertiary-dark);
+    --a4nary: var(--a4nary-dark);
+    --links: var(--links-dark);
+    --text: var(--text-dark);
+}
+
+[color-scheme="light"]{
+    --primary: var(--primary-light);
+    --secondary: var(--secondary-light);
+    --tertiary: var(--tertiary-light);
+    --a4nary: var(--a4nary-light);
+    --links: var(--links-light);
+    --text: var(--text-light);
+}
+
+/* :root.dark-theme {
+    --primary: rgb(156, 18, 18);
+    --secondary: #197dac;
+    --tertiary: rgb(212, 0, 124);
+    --a4nary: rgb(156, 75, 75);
+} */

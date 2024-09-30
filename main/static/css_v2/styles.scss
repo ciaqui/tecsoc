@@ -1,0 +1,26 @@
+@import "./setup/setup";
+
+.maketextnice {
+    p{
+        background-color: var(--a4nary);
+        /*border-radius: 5px;*/
+        /*border: #ac0000 2px solid;*/
+        margin:20px 0;
+        padding:15px;
+        /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+    }
+}
+
+@import "./header/header";
+@import "./aside/aside";
+@import "./main/main";
+@import "./footer/footer";
+
+
+/* CARDS */
+.card,
+.testimonial-card{
+    max-width:300px;
+}
+
+@import "./media/media";

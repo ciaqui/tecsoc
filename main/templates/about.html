@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<background-container>
+	<div class="team">
+		<h2>Our Committee</h2>
+		
+			{% for member in team_members %}
+			<div class="column-team">
+				<div class="container-top">
+					<h3 class="header-center">
+						{{member.name}}
+						<br>
+						<em style="font-weight: 400;">{{member.role}}</em>
+					</h3>
+				</div>
+				<div class="container-center">
+					{% if member.img|length > 0 %}
+						<img src="{{url_for('static', filename='img/team/' + member.img +'.jpg')}}" class="small-image">
+					{% endif %}
+				</div>
+				<div class="container-bottom" style="height: 150px;">
+					<p>{{member.about}}</p>
+					<a href="mailto:{{ member.email }}">{{member.email}}</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+</background-container>
+
+<background-container>
+	<div class="projects">
+		<h2 style="margin-bottom: 75px;">Testimonials</h2>
+
+		{% for testimonial in testimonials %}
+		<div class="project_styling" style="height: 33vh;">
+			<div class="flex_child">
+				<div class="image_child">
+					{% if testimonial.img|length > 0 %}
+                        <img class="project_img" src="{{ url_for('static', filename='img/testimonial/' + testimonial.img) }}">
+                    {% endif %}
+				</div>
+
+				<div class="text_child">
+					<div class="testimonial-card">
+						<p><i>“{{testimonial.description}}”</i><br><br>- Current Member</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</background-container>
+
+<background-container>
+	<div class="wrapper">
+		<h2>Our History</h2>
+		<div class="center-line"></div>
+		<div class="row row-1">
+		  <section>
+			<i class="icon fas fa-home"></i>
+			<div class="details">
+			  <span class="title">Beginning</span>
+			  <span>2013</span>
+			</div>
+			<p>The Electronics and Technology Society was established  by Dr James Bell, Cardiff University</p>
+		  </section>
+		</div>
+		<div class="row row-2">
+		  <section>
+			<i class="icon fas fa-book-open"></i>
+			<div class="details">
+			  <span class="title">Development</span>
+			  <span>2013 - 2018</span>
+			</div>
+			<p>Shock Sock – UKSEDS Conference Line follows Electronics and Technology Society – More focus on students that want support with their own projects.</p>
+		  </section>
+		</div>
+		<div class="row row-1">
+		  <section>
+			<i class="icon fas fa-rocket"></i>
+			<div class="details">
+			  <span class="title">Competition</span>
+			  <span>2018 - 2019</span>
+			</div>
+			<p>First Rocketry competition, finished in 3rd place. First Battlebot championship – University inclusion</p>
+		  </section>
+		</div>
+		<div class="row row-2">
+		  <section>
+			<i class="icon fas fa-star"></i>
+			<div class="details">
+			  <span class="title">Success</span>
+			  <span>2020 - 2021</span>
+			</div>
+			<p>Society expands number of active members and finishes in the Top Five for Rocketry competition</p>
+		  </section>
+		</div>
+	  </div>
+</background-container>
+
+<background-container>
+	<div class="about">
+		<h2>Our Values</h2>
+	
+		<div class="column">
+			<div class="container-top">
+				<h3 class="header-center">Guidance</h3>
+			</div>
+			<div class="container-center">
+				<img src="{{ url_for('static', filename = 'img/group4.jpg') }}" alt="" class="small-image">
+			</div>
+			<div class="container-bottom">
+				Building and encouraging the development / improvement of skills, more than just Electronics and
+					Technology, we assist you to achieve your goals
+			</div>
+		</div>
+		
+		<div class="column">
+			<div class="container-top">
+				<h3 class="header-center">Communication</h3>
+			</div>
+			<div class="container-center">
+				<img src="{{ url_for('static', filename = 'img/group2.jpg') }}" alt="" class="small-image">
+			</div>
+			<div class="container-bottom">
+				Helping students to do more with the time they spend in university. Developing bonds, networks and
+					building the world we want to see
+			</div>
+		</div>
+				
+		<div class="column">
+			<div class="container-top">
+				<h3 class="header-center">Inclusivity</h3>
+			</div>
+			<div class="container-center">
+				<img src="{{ url_for('static', filename = 'img/rocket11.jpg') }}" alt="" class="small-image">
+			</div>
+			<div class="container-bottom">
+				Within the society we encourage our members to get involved with projects that are group led and
+					assist them in every step of the way
+			</div>
+		</div>
+	
+		<div class="column">
+			<div class="container-top">
+				<h3 class="header-center">Creativity</h3>
+			</div>
+			<div class="container-center">
+				<img src="{{ url_for('static', filename = 'img/rocket3.jpg') }}" alt="" class="small-image">
+			</div>
+			<div class="container-bottom">
+				Our members are free to work on independent projects, and we can provide funding and
+				connections with academics that can help bring their ideas to fruition
+			</div>
+		</div>
+		
+		<!--
+		<a href="{{ url_for('about') }}">
+			<button class="button-spacing">More About Us</button>
+		</a>
+		-->
+	</div>
+</background-container>
+
+<!--
+<background-container>
+	<div class="">
+		<h2>Words</h2>
+		<div class="maketextnice">
+			<p>Building, encouraging, developing, improving, skills, more than, Electronics and Technology</p>
+			<p>Helping students to do more with the time they spend in university. Developing bonds, networks and building the world we want to see. </p>
+			<p>The Technology Society was established as a platform to enable electrical engineering students to connect and work on projects that nurtured the skills they wish to develop. In recent years the society has encouraged students form across the university to join and participate in the projects and activities that we are involved with.</p>
+			<p>Within the society we encourage our members to get involved with projects that are group led. We also enable our member to work on independent projects, helping to find funding as well as provide connections with students and academics that can help bring their projects to fruition.</p>
+			<p>We are always looking for new sponsorship and support for our projects.</p>
+		</div>
+	</div>
+</background-container>
+-->
+{% endblock %}

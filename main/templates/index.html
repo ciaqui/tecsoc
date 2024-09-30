@@ -1,0 +1,191 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<background-container>
+    <div class="events">
+        <h2>Upcoming Events</h2>
+
+        {% for event in events %}
+        <div class="event_styling">
+            {% if event.img|length > 0 %}
+            <div class="flex_child-events">
+                <a href="#">
+                    <img class="event_img" src="{{ url_for('static', filename='img/team/' + event.img + '.jpg') }}">
+                </a>
+            </div>
+            {% endif %}
+
+            <div class="heading-design">
+                <h3>{{ event.heading }}</h3>
+            </div>
+            <div class="flex_child-events">
+                <strong>Date: </strong> {{ event.date }} | <strong>Time: </strong> {{ event.time }}
+                <br>
+                <br>
+                <strong>Location: </strong> {{ event.Location }}
+                <br>
+                <br>
+                <strong>Description: </strong> {{ event.description }}
+                <br>
+                <br>
+                <a href="{{ event.link }}" target="_blank"><strong><i>Book a ticket ></i></strong></a>
+                <br>
+                <br>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!--
+        <a href="{{ url_for('events') }}">
+            <button>More Events</button>
+        </a>
+        -->
+    </div>
+</background-container>
+
+<background-container>
+    <div class="projects">
+        <h2 style="margin-bottom: 75px;">Our Projects</h2>
+        <!-- add some projects here -->
+
+        {% for project in projects %}
+        <div class="project_styling">
+            
+            <div class="flex_child">
+                <div class="image_child">
+                    {% if project.img|length > 0 %}
+                    <img class="project_img" src="{{ url_for('static', filename='img/projects/' + project.img) }}">
+                    {% endif %}
+                
+                </div>
+
+                <div class="heading-design" style="text-align: center; padding: 30px 20px 1px 20px;">
+                    <h3>{{ project.heading }}</h3>
+                </div>
+                <div class="text_child">
+                    <!-- <strong>Start Date:</strong> {{ project.date }} | <strong>Time:</strong> {{ project.time }} -->
+                    <p>
+                    {{ project.description }}
+                    </p>
+                    <!-- <br> -->
+                    <!-- <br> -->
+                    <!-- <strong>Link:</strong> <a href="https://www.cardiffstudents.com/projects/6495/{{ project.link }}" target="_blank">Book a ticket</a> -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!--
+        <a href="{{ url_for('projects') }}">
+            <button>More projects</button>
+        </a>
+        -->
+    </div>
+</background-container>
+
+    <!--
+    <div class="equipment">
+        <h2>Our Equipment</h2>
+        <h4>- Coming Soon -</h4>
+        <br>
+
+         <a href="">
+        <button style="background-color: grey; cursor: not-allowed;">See More</button>
+        </a> 
+        <br>
+        <br>
+    </div>
+
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    -->
+<background-container>
+    <div class="about">
+        <h2>Our Values</h2>
+    
+        <div class="column">
+            <div class="container-top">
+                <h3 class="header-center">Guidance</h3>
+            </div>
+            <div class="container-center">
+                <img src="{{ url_for('static', filename = 'img/group4.jpg') }}" alt="" class="small-image">
+            </div>
+            <div class="container-bottom">
+                Building and encouraging the development / improvement of skills, more than just Electronics and
+                    Technology, we assist you to achieve your goals
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="container-top">
+                <h3 class="header-center">Communication</h3>
+            </div>
+            <div class="container-center">
+                <img src="{{ url_for('static', filename = 'img/group2.jpg') }}" alt="" class="small-image">
+            </div>
+            <div class="container-bottom">
+                Helping students to do more with the time they spend in university. Developing bonds, networks and
+                    building the world we want to see
+            </div>
+        </div>
+                
+        <div class="column">
+            <div class="container-top">
+                <h3 class="header-center">Inclusivity</h3>
+            </div>
+            <div class="container-center">
+                <img src="{{ url_for('static', filename = 'img/rocket11.jpg') }}" alt="" class="small-image">
+            </div>
+            <div class="container-bottom">
+                Within the society we encourage our members to get involved with projects that are group led and
+                 assist them in every step of the way
+            </div>
+        </div>
+    
+        <div class="column">
+            <div class="container-top">
+                <h3 class="header-center">Creativity</h3>
+            </div>
+            <div class="container-center">
+                <img src="{{ url_for('static', filename = 'img/rocket3.jpg') }}" alt="" class="small-image">
+            </div>
+            <div class="container-bottom">
+                Our members are free to work on independent projects, and we can provide funding and
+                connections with academics that can help bring their ideas to fruition
+            </div>
+        </div>
+        
+        <!--
+        <a href="{{ url_for('about') }}">
+            <button class="button-spacing">More About Us</button>
+        </a>
+        -->
+    </div>
+</background-container>
+
+    <!--
+    <div class="blogs">
+        <h2>Latest News / Blogs</h2>
+        <br>
+
+        <h4>- Coming Soon -</h4>
+        <br>
+         <a href=""> 
+        <button style="background-color: grey; cursor: not-allowed;">See More</button>
+         </a>
+    </div>
+    -->
+
+<background-container>
+    <div class="opening">
+        <h2 style="margin-bottom: 75px;">Who We Are</h2>
+        <video width="100%" height="auto" controls class="video-container">
+            <source src="img/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</background-container>
+
+{% endblock %}

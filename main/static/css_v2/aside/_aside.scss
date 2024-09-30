@@ -1,0 +1,41 @@
+
+/*
+#########################
+
+    Aside Stuff
+
+#########################
+*/
+aside{
+    grid-area: aside;
+    position: relative;
+    /* height: 100vh; */
+    margin-right: 15%;
+    padding-left: 5%;
+    background-color: var(--a4nary); /* temp colour */
+    /* background: linear-gradient(90deg,#ac0000 5%,#bbb 15%,#bbb 85%,#ac0000 ); */
+    li{
+        margin:10px 0;
+        a{
+            padding: 3px;
+        }
+    }
+}
+
+.inner-aside{
+    position: sticky;
+    top: 0;
+    padding-bottom: 20px;
+    li{
+        display: block;
+        a{
+            text-decoration: none;
+            color: #fff;
+            background-color: rgb(136, 32, 32);
+            &:hover{
+                background-color:rgb(168, 107, 107)
+            }
+        }
+    }
+}
+

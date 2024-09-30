@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    /* move to external style sheet */
+
+    .event_link {
+        color: #468541;
+        text-decoration: none;
+    }
+
+    .event_link:hover {
+        text-decoration: none;
+    }
+
+    .event_img {
+        width: 100px;
+        border-radius: 20px;
+        color: #468541;
+        text-decoration: none;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+
+    .event_heading {
+        font-size: 20px;
+        color: black;
+        text-decoration: none;
+    }
+
+    .event_heading:hover {
+        color: #468541;
+        text-decoration: none;
+    }
+
+    .flex_child {
+        flex: 1;
+        padding: 20px;
+        border: 2px solid rgb(136, 32, 32);
+        border-radius: 7px;
+    }
+
+    .flex_child:first-child {
+        flex: 1;
+    }
+
+    .flex_child:nth-child(2) {
+        flex: 4;
+    }
+</style>
+{% for blog in blogs %}
+<div class="event_styling">
+    {% if blog.img|length > 0 %}
+    <div class="flex_child">
+        <a href="#">
+            <img class="event_img" src="{{ url_for('static', filename='img/blog/' + blog.img + '.jpg') }}">
+        </a>
+    </div>
+    {% endif %}
+    <div class="flex_child">
+        <h2>{{ blog.heading }}</h2>
+        <strong>Date:</strong> {{ blog.date }} | <strong>Time:</strong> {{ blog.time }}
+        <br>
+        <br>
+        <strong>Description:</strong> {{ blog.description }}
+        <br>
+        <br>
+        <a href="#">Read More</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

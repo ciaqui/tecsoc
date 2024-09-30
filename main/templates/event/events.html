@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<background-container>
+    <div class="events">
+        <h2>Upcoming Events</h2>
+
+        {% for event in events %}
+        <div class="event_styling">
+            {% if event.img|length > 0 %}
+            <div class="flex_child-events">
+                <a href="#">
+                    <img class="event_img" src="{{ url_for('static', filename='img/team/' + event.img + '.jpg') }}">
+                </a>
+            </div>
+            {% endif %}
+
+            <div class="heading-design">
+                <h3>{{ event.heading }}</h3>
+            </div>
+            <div class="flex_child-events">
+                <strong>Date: </strong> {{ event.date }} | <strong>Time: </strong> {{ event.time }}
+                <br>
+                <br>
+                <strong>Location: </strong> {{ event.Location }}
+                <br>
+                <br>
+                <strong>Description: </strong> {{ event.description }}
+                <br>
+                <br>
+                <a href="{{ event.link }}" target="_blank"><strong><i>Book a ticket ></i></strong></a>
+                <br>
+                <br>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!--
+        <a href="{{ url_for('events') }}">
+            <button>More Events</button>
+        </a>
+        -->
+    </div>
+</background-container>
+
+<background-container>
+    <div class="events">
+        <h2>Past Events</h2>
+        {% for event in past_events %}
+            <div class="event_styling">
+                {% if event.img|length > 0 %}
+                    <div class="flex_child">
+                        <a href="#">
+                            <img class="event_img" src="{{ url_for('static', filename='img/team/' + event.img + '.jpg') }}">
+                        </a>
+                    </div>
+                {% endif %}
+                
+                <div class="heading-design">
+                    <h3>{{ event.heading }}</h2>
+                </div>
+                <div class="flex_child-events">
+                    <strong>Date:</strong> {{ event.date }} | <strong>Time:</strong> {{ event.time }}
+                    <br>
+                    <br>
+                    <strong>Location:</strong> {{ event.Location }}
+                    <br>
+                    <br>
+                    <strong>Description:</strong> {{ event.description }}
+                    <br>
+                    <br>
+                    <a href="https://www.cardiffstudents.com/events/6495/{{ event.link }}" target="_blank"><strong><i>Book a ticket ></i></strong></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</background-container>
+
+{% endblock %}

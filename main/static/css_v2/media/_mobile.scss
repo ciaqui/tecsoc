@@ -1,0 +1,113 @@
+/* ####### Mobile Stuff ####### */ 
+@media only screen and (max-width: 860px){
+    .main-container{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-areas:
+            'header'
+            'main'
+            'footer'
+        ;
+    }
+    aside{
+        display: none;
+    }
+    /* nav {
+        display: none;
+    } */
+    main{
+        padding: 0 3%;
+    }
+    .inner_footer{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: auto    auto    auto    auto    auto    auto    auto;
+        grid-template-areas:
+            'footer-sec-1'
+            'footer-sec-2'
+            'footer-sec-3'
+            'footer-sec-4'
+            'footer-sec-5'
+            'copy-right'
+            'footer-btn'
+            ;
+    }
+    
+    .card{
+        max-width:100%;
+        width:100%;
+        /* align-items: stretch; */
+    }
+
+    .testimonial-card{
+        max-width:100%;
+    }
+}
+    
+@media only screen and (max-device-width: 15cm){
+    .main-container{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-areas:
+            'header'
+            'main'
+            'footer'
+        ;
+    }
+    aside{
+        display: none;
+    }
+    /* nav {
+        display: none;
+    } */
+    main{
+        padding: 0 3%;
+    }
+    .inner_footer{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: auto    auto    auto    auto    auto    auto    auto;
+        grid-template-areas:
+            'footer-sec-1'
+            'footer-sec-2'
+            'footer-sec-3'
+            'footer-sec-4'
+            'footer-sec-5'
+            'copy-right'
+            'footer-btn'
+    ;
+        padding: 0 3%;
+    }
+    
+    .card{
+        max-width:300px;
+        width:100%;
+        /* align-items: stretch; */
+    }
+
+    .testimonial-card{
+        max-width:100%;
+    }
+}
+
+.event_styling {
+    width: 100%;
+    margin-bottom: 20px;
+    /* padding: 20px; */
+    background: var(--a4nary);
+    border-radius: 7px;
+    display: flex;
+    position: relative;
+}
+
+.theme_changer{
+    position:absolute;
+    top:0;
+    right:0;
+    width:50px;
+    height:50px;
+    background-color:#222;
+    border-radius:50%;
+    border: 3px solid #fff;
+    cursor:pointer;
+}
+.theme_changer:is(:hover, :focus){
+    background-color:#666;
+    opacity:.8;
+}

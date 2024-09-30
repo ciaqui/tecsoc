@@ -1,0 +1,21 @@
+/*
+#########################
+
+    Header Stuff
+
+#########################
+*/
+
+header{
+    grid-area: header;
+    background-color: var(--tertiary);
+    /* position: sticky; */
+    /* top: 0; */
+    z-index: 999;
+    /* background-color: #bbb; */
+    /* background-color: #ac0000; */
+    /* background: linear-gradient(90deg,#ac0000 5%,#bbb 15%,#bbb 85%,#ac0000 ); */
+}
+
+
+@import "./nav";

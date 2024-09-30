@@ -1,0 +1,10 @@
+a {
+    color: var(--links);
+    // color: #6789e6;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <div class="project-content">
+            <div class="project-title">
+                <h1>{{ project.title }}</h1>
+            </div>
+            
+            <div class="project-feature-image">
+                {% if project.image %}
+                    <img src="{{ project_feature_image }}" alt="{{ project_feature_image_title }}">
+                {% else %}
+                    <img src="{{ default_project_image }}" alt="{{ default_project_image_title }}">
+                {% endif %}
+            </div>
+
+            <div class="project-iamge-gal">
+                <h2>Project Images</h2>
+                {% for image in project_images %}
+                    <img src="{{ image.image }}" alt="{{ image.title }}">
+                {% endfor %}
+            </div>
+
+            <div class="project-about">
+                <h2>About the project</h2>
+                {{ project.description }}
+            </div>
+
+            <div class="project-parts">
+                <h2>What parts we use</h2>
+                {{ project.parts }}
+            </div>
+
+            <div class="project-history">
+                {% for project_date in project_history %}
+                    <div class="project-history-card">
+                        <h3>{{ project_date.title }}</h3>
+                        <img class="project-history-card-image"src="{{ project_date.image }}" alt="{{ project_date.image_title }}">
+                        <p class="project-history-card-description">
+                            {{ project_date.description }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="project-list">
+            <h2>Other Projects</h2>
+            {% for project in project_list %}
+                {% if project.image %}
+                <img src="{{ project_feature_image }}" alt="{{ project_feature_image_title }}">
+            {% else %}
+                <img src="{{ default_project_image }}" alt="{{ default_project_image_title }}">
+            {% endif %}
+                {{ project.title }}
+                {{ project.short_description }}
+                <a href="{{ url_for('project', project.id) }}">See Project</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

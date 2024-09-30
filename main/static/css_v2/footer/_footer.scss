@@ -1,0 +1,60 @@
+/*
+#########################
+
+    Footer Stuff
+
+#########################
+*/
+
+footer{
+    grid-area: footer;
+    background: var(--tertiary);
+    bottom: 0;
+}
+
+.inner_footer{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: auto    auto    auto;
+    grid-template-areas:
+        'footer-sec-1   footer-sec-2    footer-sec-3    footer-sec-4    footer-sec-5'
+        'copy-right     copy-right      copy-right      copy-right      copy-right'
+        'footer-btn     .               .               .               .'
+        ;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.footer-btn{
+    grid-area: footer-btn;
+}
+
+.footer-sec-1{
+    grid-area: footer-sec-1;
+    text-align: center;
+}
+
+.footer-sec-2{
+    grid-area: footer-sec-2;
+    text-align: center;
+}
+
+.footer-sec-3{
+    grid-area: footer-sec-3;
+    text-align: center;
+}
+
+.footer-sec-4{
+    grid-area: footer-sec-4;
+    text-align: center;
+}
+
+.footer-sec-5{
+    grid-area: footer-sec-5;
+    text-align: center;
+}
+
+.copy-right{
+    grid-area:copy-right;
+    text-align: center;
+}
